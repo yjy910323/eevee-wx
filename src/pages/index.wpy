@@ -40,9 +40,6 @@
     }
 
     computed = {
-      now () {
-        return +new Date()
-      }
     }
 
     methods = {
