@@ -29,6 +29,9 @@ module.exports = {
       outputStyle: 'compressed'
     },
     */
+    stylus: {
+      compress: prod
+    },
     babel: {
       sourceMap: !prod,
       presets: [

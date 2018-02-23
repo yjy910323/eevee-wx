@@ -1,10 +1,12 @@
 <script>
   import wepy from 'wepy'
   import 'wepy-async-function'
+  import interfaces from './interfaces'
 
   export default class extends wepy.app {
     config = {
       pages: [
+        'pages/register',
         'pages/index'
       ],
       window: {
@@ -16,7 +18,9 @@
     }
 
     globalData = {
-      userInfo: null
+      userInfo: {
+        eeveeInfo: null
+      }
     }
 
     constructor () {
@@ -25,8 +29,33 @@
       this.use('promisify')
     }
 
-    onLaunch () {
-      this.testAsync()
+    async onLaunch () {
+      console.log('app onLaunch')
+      try {
+        await interfaces.login()
+      } catch (e) {
+        wepy.showModal({
+          title: '提示',
+          content: `用户登录失败。${e.message}`
+        })
+      }
+
+      try {
+        const {userInfo} = await interfaces.getUserInfo()
+        console.log('ready to redirectTo')
+        this.globalData.userInfo = userInfo
+//        if (!this.globalData.userInfo.eeveeInfo) {
+//          // 跳转注册 必须
+//          wepy.redirectTo({
+//            url: 'register'
+//          })
+//        }
+      } catch (e) {
+        wepy.showModal({
+          title: '提示',
+          content: `用户登录失败。${e.message}`
+        })
+      }
     }
 
     sleep (s) {
@@ -42,7 +71,7 @@
       console.log(data)
     }
 
-    getUserInfo (cb) {
+    /* getUserInfo (cb) {
       const that = this
       if (this.globalData.userInfo) {
         return this.globalData.userInfo
@@ -53,7 +82,7 @@
           cb && cb(res.userInfo)
         }
       )
-    }
+    } */
   }
 </script>
 
@@ -63,10 +92,7 @@
     height: 100%;
   }
 
-  view,
-  navigator,
-  textarea,
-  input {
+  view, navigator, textarea, input {
     box-sizing: border-box;
   }
 

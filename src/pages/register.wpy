@@ -1,0 +1,79 @@
+<template>
+  <view class="container">
+    <view class="eevee-register-form">
+      <form>
+        <view class="eevee-register-form-info"> 绑定手机号,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</view>
+
+        <view class="eevee-register-form-section">
+          <view class="eevee-register-form-section-title">手机号</view>
+          <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+        </view>
+
+        <view class="eevee-register-form-section">
+          <view class="eevee-register-form-section-title">验证码</view>
+          <input placeholder="这是一个可以自动聚焦的input" auto-focus/>
+          <button type="default"> default </button>
+        </view>
+
+        <view class="eevee-register-form-section">
+          <view class="eevee-register-form-section-title">学校</view>
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="picker">
+              当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+            </view>
+          </picker>
+        </view>
+
+        <view class="eevee-register-form-section">
+          <view class="eevee-register-form-section-title">班级</view>
+          <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+            <view class="picker">
+              当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+            </view>
+          </picker>
+        </view>
+
+      </form>
+     </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    async onLoad () {
+      console.log('register load')
+    }  // 在Page和Component共用的生命周期函数
+
+    async onShow () {
+      console.log('register show')
+    }  // 只在Page中存在的页面生命周期函数
+
+    config = {}  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
+
+    data = {
+      multiArray: [['无脊柱动物', '脊柱动物'], ['扁性动物', '线形动物', '环节动物', '软体动物', '节肢动物'], ['猪肉绦虫', '吸血虫']]
+    }  // 页面所需数据均需在这里声明，可用于模板数据绑定
+
+    components = {}  // 声明页面中所引用的组件，或声明组件中所引用的子组件
+
+    mixins = []  // 声明页面所引用的Mixin实例
+
+    computed = {}  // 声明计算属性（详见后文介绍）
+
+    watch = {}  // 声明数据watcher（详见后文介绍）
+
+    methods = {}  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
+
+    events = {}  // 声明组件之间的事件处理函数
+  }
+</script>
+
+<style lang="stylus">
+.eevee-register-form
+  padding 30px
+  .eevee-register-form-info
+    word-break break-all
+
+</style>
