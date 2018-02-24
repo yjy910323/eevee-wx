@@ -6,8 +6,8 @@
   export default class extends wepy.app {
     config = {
       pages: [
-        'pages/register',
-        'pages/index'
+        'pages/index',
+        'pages/register'
       ],
       window: {
         backgroundTextStyle: 'light',
@@ -18,9 +18,7 @@
     }
 
     globalData = {
-      userInfo: {
-        eeveeInfo: null
-      }
+      userInfo: null
     }
 
     constructor () {
@@ -71,6 +69,14 @@
       console.log(data)
     }
 
+    async getUserInfo () {
+      if (this.globalData.userInfo) {
+        return this.globalData.userInfo
+      }
+      const {userInfo} = await interfaces.getUserInfo()
+      return userInfo
+    }
+
     /* getUserInfo (cb) {
       const that = this
       if (this.globalData.userInfo) {
@@ -109,5 +115,9 @@
     position: relative;
     height: 100%;
     width: 100%;
+  }
+
+  image {
+    border: 0;
   }
 </style>

@@ -1,6 +1,39 @@
 <template>
   <view>
-    home
+    <view class="user-plane">
+      <view class="user-plane-avatar">
+        <image src="{{userInfo.avatarUrl}}"></image>
+      </view>
+      <view class="user-plane-info">
+        <view class="user-plane-info-title">{{userInfo.nickName}}</view>
+        <view class="user-plane-info-other">123</view>
+      </view>
+    </view>
+    <view class="outline-plane">
+      <view class="outline-plane-all">
+        <view class="title">总学习(分钟)</view>
+        <view class="value">{{outline.allLearningTime}}</view>
+        <view class="info">共 {{outline.allLearningDay}} 天</view>
+      </view>
+      <view class="outline-plane-week">
+        <view class="outline-plane-week-learn">
+          <view class="title">本周学习(分钟)</view>
+          <view class="value">{{outline.weekLearningTime}}</view>
+        </view>
+        <view class="outline-plane-week-rank">
+          <view class="title">本周好友学习排名</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="classroom-plane">
+
+    </view>
+
+    <view class="group-plane">
+
+    </view>
+
   </view>
 </template>
 
@@ -24,7 +57,17 @@
 
     config = {}  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
 
-    data = {}  // 页面所需数据均需在这里声明，可用于模板数据绑定
+    props = {
+      userInfo: Object
+    }
+
+    data = {
+      outline: {
+        allLearningTime: 0,
+        allLearningDay: '-',
+        weekLearningTime: 0
+      }
+    }  // 页面所需数据均需在这里声明，可用于模板数据绑定
 
     components = {}  // 声明页面中所引用的组件，或声明组件中所引用的子组件
 
@@ -41,5 +84,55 @@
 </script>
 
 
-<style lang="less">
+<style lang="stylus">
+  .user-plane
+    width 100%
+    background-color red
+    display flex
+    padding 25px 15px
+    .user-plane-avatar
+      flex 0 0 65px
+      height 65px
+      background-color blue
+      image
+        width 100%
+        height 100%
+        display block
+        border-radius  32.5px
+    .user-plane-info
+      background-color darkgreen
+      flex 1
+      margin-left 15px
+      display flex
+      flex-direction column
+      justify-content space-between
+      .user-plane-info-title
+        background-color gold
+      .user-plane-info-other
+        background-color grey
+  .outline-plane
+    width 100%
+    padding 45px
+    background-color white
+    margin-bottom 10px
+    .outline-plane-all
+      text-align center
+      .title
+        font-size 17pt
+      .info
+        font-size 14pt
+        color #666
+      .value
+        font-size 20pt
+    .outline-plane-week
+      display flex
+      justify-content space-between
+      .title
+        font-size 16pt
+      .outline-plane-week-learn
+        flex 0 0 120px
+        .value
+          font-size 18pt
+      .outline-plane-week-rank
+        flex 0 0 140px
 </style>

@@ -64,7 +64,7 @@ if (prod) {
       }
     },
     imagemin: {
-      filter: /\.(jpg|png|jpeg)$/,
+      filter: /\.(jpg|png|jpeg|svg)$/,
       config: {
         jpg: {
           quality: 80

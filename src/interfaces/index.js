@@ -9,6 +9,7 @@ const interfaces = {
     return userinfo
   },
   async login () {
+    console.log('interfaces.index.login')
     let userinfoRaw = {}
     let userinfo = {}
 
@@ -23,7 +24,7 @@ const interfaces = {
           'x-wechat-iv': userinfoRaw.iv
         },
         dataType: 'json',
-        data: {}
+        data: userinfoRaw.userInfo
       })
       await wepy.setStorage({
         key: '_session',

@@ -1,9 +1,8 @@
 <template>
   <view>
-
     <view class="container">
       <view class="page page-list {{ tab === 0 ? 'visible' : 'hide' }}">
-        <home></home>
+        <home :userInfo.sync="userInfo"></home>
       </view>
       <view class="page {{ tab === 1 ? 'visible' : 'hide' }}">
         <lesson></lesson>
@@ -53,7 +52,12 @@
     data = {
       tab: 0,
       tabs: ['home', 'lesson', 'setting'],
-      showTabs: false
+      showTabs: false,
+      userInfo: {
+        nickName: '加载中',
+        avatarUrl: '../assets/svgs/home-fill.svg',
+        eeveeInfo: {}
+      }
     }
 
     computed = {
@@ -87,7 +91,9 @@
 
     async onShow () {
       console.log('onShow')
-//      this.$invoke('home', 'onShow')
+      this.userInfo = await this.$parent.getUserInfo()
+      this.$apply()
+      this.$invoke('home', 'onShow')
     }
   }
 </script>
