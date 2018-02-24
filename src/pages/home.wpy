@@ -27,11 +27,25 @@
     </view>
 
     <view class="classroom-plane">
-
+      <view wx:if="{{classroom}}">213</view>
+      <view wx:else>
+        <view class="classroom-plane-none">
+          <view class="title">绑定你所在的班级</view>
+          <view class="info">绑定你的学校你的班级，你只能帮定一个，和老师们一起去学习吧</view>
+          <button open-type="contact">设置</button>
+        </view>
+      </view>
     </view>
 
     <view class="group-plane">
-
+      <view wx:if="{{groups}}">213</view>
+      <view wx:else>
+        <view class="group-plane-none">
+          <view class="title">添加你喜欢的学习小组吧</view>
+          <view class="info">添加你喜欢的学习小组吧添加你喜欢的学习小组吧添加你喜欢的学习小组吧</view>
+          <button open-type="contact">添加</button>
+        </view>
+      </view>
     </view>
 
   </view>
@@ -65,7 +79,9 @@
       outline: {
         allLearningTime: 0,
         allLearningDay: '-',
-        weekLearningTime: 0
+        weekLearningTime: 0,
+        classroom: null,
+        groups: null
       }
     }  // 页面所需数据均需在这里声明，可用于模板数据绑定
 
@@ -82,7 +98,6 @@
     events = {}  // 声明组件之间的事件处理函数
   }
 </script>
-
 
 <style lang="stylus">
   .user-plane
@@ -135,4 +150,28 @@
           font-size 18pt
       .outline-plane-week-rank
         flex 0 0 140px
+  .classroom-plane
+    width 100%
+    padding 45px
+    background-color salmon
+    margin-bottom 10px
+    .classroom-plane-none
+      .title
+        font-size 14pt
+        padding 0px 0px 15px
+      .info
+        font-size 13pt
+        padding 0px 0px 15px
+  .group-plane
+    width 100%
+    padding 45px
+    background-color seagreen
+    margin-bottom 10px
+    .group-plane-none
+      .title
+        font-size 14pt
+        padding 0px 0px 15px
+      .info
+        font-size 13pt
+        padding 0px 0px 15px
 </style>
