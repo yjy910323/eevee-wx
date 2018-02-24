@@ -22,6 +22,7 @@
         </view>
         <view class="outline-plane-week-rank">
           <view class="title">本周好友学习排名</view>
+          <image class="avatar" src="{{outline.weekRankAvatar}}"></image>
         </view>
       </view>
     </view>
@@ -80,6 +81,7 @@
         allLearningTime: 0,
         allLearningDay: '-',
         weekLearningTime: 0,
+        weekRankAvatar: '../assets/svgs/my.svg',
         classroom: null,
         groups: null
       }
@@ -132,6 +134,7 @@
     margin-bottom 10px
     .outline-plane-all
       text-align center
+      margin-bottom 15px
       .title
         font-size 17pt
       .info
@@ -150,6 +153,10 @@
           font-size 18pt
       .outline-plane-week-rank
         flex 0 0 140px
+        .avatar
+          width 40px
+          height 40px
+          border-radius 20px
   .classroom-plane
     width 100%
     padding 45px
