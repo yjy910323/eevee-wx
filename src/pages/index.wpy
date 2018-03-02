@@ -32,9 +32,9 @@
 
 <script>
   import wepy from 'wepy'
-  import home from './home'
-  import lesson from './lesson'
-  import setting from './setting'
+  import home from '../components/home'
+  import lesson from '../components/lesson'
+  import setting from '../components/setting'
 //  import http from '../utils/request'
 
   export default class Index extends wepy.page {
@@ -76,7 +76,7 @@
           this.$invoke(this.tabs[tabIndex], 'onReload')
         } else {
           this.tab = tabIndex
-//          this.$invoke(this.tabs[tabIndex], 'onShow')
+          this.$invoke(this.tabs[tabIndex], 'onShow')
         }
       }
     }

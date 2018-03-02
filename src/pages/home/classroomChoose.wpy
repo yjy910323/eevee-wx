@@ -1,0 +1,110 @@
+<template>
+  <view>
+    <form>
+      <view class="eevee-register-form-info"> 绑定班级</view>
+
+      <view class="eevee-register-form-section">
+        <view class="eevee-register-form-section-title">手机号</view>
+        <picker mode="selector" value="123" range="{{schools}}">
+          <view class="picker">
+            当前选择: 123
+          </view>
+        </picker>
+      </view>
+
+      <view class="eevee-register-form-section">
+        <view class="eevee-register-form-section-title">年级</view>
+        <picker mode="selector" value="123" range="{{grades}}">
+          <view class="picker">
+            当前选择: 123
+          </view>
+        </picker>
+      </view>
+
+      <view class="eevee-register-form-section">
+        <view class="eevee-register-form-section-title">班级</view>
+        <picker mode="selector" value="123" range="{{classrooms}}">
+          <view class="picker">
+            当前选择: 123
+          </view>
+        </picker>
+      </view>
+
+      <view class="eevee-register-form-section">
+        <view class="eevee-register-form-section-title">班主任</view>
+        <picker mode="selector" value="123" range="{{teachers}}">
+          <view class="picker">
+            当前选择: 123
+          </view>
+        </picker>
+      </view>
+
+      <button open-type="contact">申请加入</button>
+
+    </form>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '班级选择'
+    }
+    components = {
+    }
+
+    mixins = []
+
+    data = {
+      userInfo: {
+        nickName: '加载中',
+        avatarUrl: '../assets/svgs/home-fill.svg',
+        eeveeInfo: {}
+      },
+      schools: ['123', '123'],
+      grades: [],
+      classrooms: [],
+      teachers: []
+    }
+
+    computed = {
+    }
+
+    methods = {
+      switchTapTo (tabIndex) {
+        tabIndex = parseInt(tabIndex)
+        // 清空消息提醒
+        if (tabIndex === 1) {
+//          this.unreadMessagesCount = 0
+//          this.$apply()
+        }
+
+        if (this.tab === tabIndex) {
+          this.$invoke(this.tabs[tabIndex], 'onReload')
+        } else {
+          this.tab = tabIndex
+          this.$invoke(this.tabs[tabIndex], 'onShow')
+        }
+      }
+    }
+
+    events = {
+    }
+
+    async onLoad () {
+      console.log('onLoad')
+    }
+
+    async onShow () {
+      console.log('onShow')
+      this.userInfo = await this.$parent.getUserInfo()
+      this.$apply()
+    }
+  }
+</script>
+
+
+<style lang="less">
+</style>

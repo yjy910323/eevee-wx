@@ -1,0 +1,50 @@
+<template>
+  <view>
+   classroomDetail
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '班级详情'
+    }
+    components = {}
+
+    mixins = []
+
+    data = {
+      userInfo: {
+        nickName: '加载中',
+        avatarUrl: '../assets/svgs/home-fill.svg',
+        eeveeInfo: {}
+      },
+      schools: ['123', '123'],
+      grades: [],
+      classrooms: [],
+      teachers: []
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {}
+
+    async onLoad () {
+      console.log('onLoad')
+    }
+
+    async onShow () {
+      console.log('onShow')
+      this.userInfo = await this.$parent.getUserInfo()
+      this.$apply()
+    }
+  }
+</script>
+
+
+<style lang="less">
+</style>

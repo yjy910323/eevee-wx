@@ -1,0 +1,55 @@
+<template>
+  <view>
+    groupDetail
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '小组详情'
+    }
+    components = {}
+
+    mixins = []
+
+    props = {
+      id: Number
+    }
+
+    data = {
+      userInfo: {
+        nickName: '加载中',
+        avatarUrl: '../assets/svgs/home-fill.svg',
+        eeveeInfo: {}
+      },
+      schools: ['123', '123'],
+      grades: [],
+      classrooms: [],
+      teachers: []
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {}
+
+    async onLoad (options) {
+      console.log('onLoad')
+      console.log('id', options.id)
+    }
+
+    async onShow () {
+      console.log('onShow')
+      this.userInfo = await this.$parent.getUserInfo()
+      this.$apply()
+    }
+  }
+</script>
+
+
+<style lang="less">
+</style>

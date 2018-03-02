@@ -33,22 +33,25 @@
         <view class="classroom-plane-none">
           <view class="title">绑定你所在的班级</view>
           <view class="info">绑定你的学校你的班级，你只能帮定一个，和老师们一起去学习吧</view>
-          <button open-type="contact">设置</button>
+          <navigator url="/pages/home/classroomChoose" hover-class="navigator-hover">
+            <button open-type="contact">设置</button>
+          </navigator>
         </view>
       </view>
     </view>
-
+    <wxc-avatar class="avatar" src="https://s11.mogucdn.com/p2/170413/upload_86dkh4e886991g9lji7a6g5c530ji_400x400.jpg"></wxc-avatar>
     <view class="group-plane">
       <view wx:if="{{groups}}">213</view>
       <view wx:else>
         <view class="group-plane-none">
           <view class="title">添加你喜欢的学习小组吧</view>
           <view class="info">添加你喜欢的学习小组吧添加你喜欢的学习小组吧添加你喜欢的学习小组吧</view>
-          <button open-type="contact">添加</button>
+          <navigator url="/pages/home/groupList" hover-class="navigator-hover">
+            <button open-type="contact">添加</button>
+          </navigator>
         </view>
       </view>
     </view>
-
   </view>
 </template>
 
@@ -70,7 +73,11 @@
 
     async onComponentLoad () {}
 
-    config = {}  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
+    config = {
+      usingComponents: {
+        'wxc-avatar ': '/src/packages/@minui/wxc-avatar/dist/index'
+      }
+    }  // 只在Page实例中存在的配置数据，对应于原生的page.json文件
 
     props = {
       userInfo: Object
@@ -95,13 +102,19 @@
 
     watch = {}  // 声明数据watcher（详见后文介绍）
 
-    methods = {}  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
+    methods = {
+    }  // 声明页面wxml中标签的事件处理函数。注意，此处只用于声明页面wxml中标签的bind、catch事件，自定义方法需以自定义方法的方式声明
 
     events = {}  // 声明组件之间的事件处理函数
   }
 </script>
 
 <style lang="stylus">
+  .avatar {
+    display: block;
+    width: 120rpx;
+    height: 120rpx;
+  }
   .user-plane
     width 100%
     background-color red

@@ -1,0 +1,74 @@
+<template>
+  <view>
+    <view class="weui-panel">
+      <view class="weui-panel__hd">小图文组合列表</view>
+      <view class="weui-panel__bd">
+        <view class="weui-media-box weui-media-box_small-appmsg">
+          <view class="weui-cells weui-cells_in-small-appmsg">
+
+            <navigator url="/pages/home/groupDetail?id=123" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>文字标题</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+
+            <navigator url="/pages/home/groupDetail?id=435" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+              <view class="weui-cell__hd"><image src="{{icon20}}" style="width: 20px;height: 20px;margin-right: 5px" /></view>
+              <view class="weui-cell__bd weui-cell_primary">
+                <view>文字标题</view>
+              </view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: '小组列表'
+    }
+    components = {}
+
+    mixins = []
+
+    data = {
+      userInfo: {
+        nickName: '加载中',
+        avatarUrl: '../assets/svgs/home-fill.svg',
+        eeveeInfo: {}
+      },
+      schools: ['123', '123'],
+      grades: [],
+      classrooms: [],
+      teachers: []
+    }
+
+    computed = {}
+
+    methods = {}
+
+    events = {}
+
+    async onLoad () {
+      console.log('onLoad')
+    }
+
+    async onShow () {
+      console.log('onShow')
+      this.userInfo = await this.$parent.getUserInfo()
+      this.$apply()
+    }
+  }
+</script>
+
+
+<style lang="less">
+</style>
